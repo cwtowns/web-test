@@ -49,3 +49,5 @@ lerna-debug.log
 services/logstash/pipeline/.jdbc*
 
 kubernetes/api-gateway/**/*.tgz
+
+coverage/

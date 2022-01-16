@@ -2,7 +2,7 @@ import * as bodyParser from 'body-parser'
 import morgan from 'morgan'
 import { Server } from '@overnightjs/core'
 import cors from 'cors'
-import * as controllers from './controllers/index'
+import * as controllers from './api/controllers/index'
 import Logger from './logger'
 
 export class RouterServer extends Server {
