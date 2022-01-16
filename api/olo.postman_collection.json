@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "9feefc8b-6dac-4841-9681-89eb866ff049",
+		"name": "olo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Restaurants",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost:9090/restaurant"
+			},
+			"response": []
+		},
+		{
+			"name": "Single Restaurant",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost:9090/restaurant/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Restaurant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 5,\r\n    \"name\": \"Buffa's\",\r\n    \"address\" : \"800 Esplanade Ave\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:9090/restaurant"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Reservation Config",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9090/reservationConfig/?startTime=2020-01-01 08:00:00 PM&endTime=2020-01-01 08:45:00 PM&restaurantId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"reservationConfig",
+						""
+					],
+					"query": [
+						{
+							"key": "startTime",
+							"value": "2020-01-01 08:00:00 PM"
+						},
+						{
+							"key": "endTime",
+							"value": "2020-01-01 08:45:00 PM"
+						},
+						{
+							"key": "restaurantId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Reservation Config",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"restaurantId\" : 1,\r\n    \"startTime\" : \"2020-01-01 08:00:00 PM\",\r\n    \"endTime\" : \"2020-01-01 08:45:00 PM\",\r\n    \"reservationPartySize\" : 5,\r\n    \"numberOfTables\" : 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:9090/reservationConfig/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Reservation (time is optional)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "Get Reservation?restaurantId=331&reservationTime=2020-01-01 08:45:00 PM",
+					"host": [
+						"Get Reservation"
+					],
+					"query": [
+						{
+							"key": "restaurantId",
+							"value": "331"
+						},
+						{
+							"key": "reservationTime",
+							"value": "2020-01-01 08:45:00 PM"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Reservation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    restaurantId: 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/reservation/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"reservation",
+						""
+					],
+					"query": [
+						{
+							"key": "restaurantId",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
