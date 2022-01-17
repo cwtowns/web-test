@@ -24,6 +24,9 @@ export const create = async (payload: ReservationCreationAttributes): Promise<Re
         }
 
         const limit: number = config.maxTables;
+        const configId: number = config.id;
+
+        payload.reservationConfigId = configId;
 
         const currentCount: number = await Reservation.count({
             where: {

@@ -4,12 +4,13 @@ import {
   CreatedAt,
   DeletedAt,
   ForeignKey,
+  HasMany,
   Model,
   PrimaryKey, Table,
   UpdatedAt
 } from 'sequelize-typescript'
 
-import { Restaurant } from '.'
+import { ReservationConfig, Restaurant } from '.'
 
 
 export interface ReservationRetrieveByRestaurantAttributes {
@@ -24,6 +25,7 @@ export interface ReservationRetrieveByTimeAttributes extends ReservationRetrieve
 export interface ReservationCreationAttributes {
   restaurantId: number,
   customerId: number,
+  reservationConfigId?: number,
   reservationTime: Date,
   partySize: number
 }
@@ -46,6 +48,10 @@ export class Reservation extends Model<ReservationAttributes, ReservationCreatio
   @ForeignKey(() => Restaurant)
   @Column
   public restaurantId!: number
+
+  @Column
+  @ForeignKey(() => ReservationConfig)
+  public reservationConfigId!: number;  
 
   @Column
   public customerId!: number 

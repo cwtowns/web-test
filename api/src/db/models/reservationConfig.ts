@@ -1,17 +1,20 @@
 import {
+  AfterBulkCreate,
+  AfterCreate,
   AutoIncrement,
   BelongsTo,
   Column,
   CreatedAt,
   DeletedAt,
   ForeignKey,
+  HasMany,
   Model,
   PrimaryKey, Table,
   UpdatedAt
 } from 'sequelize-typescript'
 import { HasOneGetAssociationMixin } from 'sequelize/dist'
 
-import { Restaurant } from '.'
+import { Reservation, Restaurant } from '.'
 
 export interface ReservationConfigRetrieveAttributes {
   restaurantId: number,
@@ -32,7 +35,9 @@ export interface ReservationConfigAttributes extends ReservationConfigCreationAt
   updated_at: Date
 }
 
-export interface ReservationConfigOutput extends Required<ReservationConfigAttributes> { }
+export interface ReservationConfigOutput extends Required<ReservationConfigAttributes> {
+  availableTables: number
+}
 
 @Table
 export class ReservationConfig extends Model<ReservationConfigAttributes, ReservationConfigCreationAttributes> {
@@ -52,11 +57,21 @@ export class ReservationConfig extends Model<ReservationConfigAttributes, Reserv
   public reservationSize!: number
 
   @Column
-  public maxTables!: number
+  public maxTables!: number  
+
+  public availableTables!: number
+
+  @HasMany(() => Reservation)
+  public reservations: Reservation[]
 
   @CreatedAt
   public readonly created_at!: Date
 
   @UpdatedAt
   public readonly updated_at!: Date
+
+  @AfterBulkCreate
+  static updateAvailableTables(configs: ReservationConfig[]) {
+    configs.forEach(c => c.availableTables = c.maxTables);
+  }
 }

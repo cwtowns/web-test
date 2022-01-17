@@ -6,15 +6,14 @@ import { Sequelize } from 'sequelize-typescript';
 import { createDbConnection } from '../common'
 
 
-const dbTearDown = async () => {
+const dbTearDown = async (dbConnection) => {
     await Reservation.sequelize?.query("alter table \"Reservations\" disable trigger all")
     await ReservationConfig.sequelize?.query("alter table \"ReservationConfigs\" disable trigger all")
     await Restaurant.sequelize?.query("alter table \"Restaurants\" disable trigger all")
 
+    console.log("teardown");
 
-    await Reservation.truncate({ force: true, cascade: true })
-    await Restaurant.truncate({ force: true, cascade: true })
-    await ReservationConfig.truncate({ force: true, cascade: true })    
+    await dbConnection.truncate({force: true, cascade: true});
 }
 
 describe('reservation DAL', () => {
@@ -23,11 +22,11 @@ describe('reservation DAL', () => {
     beforeAll(async () => {
         dbConnection = await createDbConnection();
         dbConnection.addModels([Reservation, ReservationConfig, Restaurant]);
-        await dbTearDown();
+        await dbTearDown(dbConnection);
     });
 
     afterAll(async () => {
-        await dbTearDown();
+        await dbTearDown(dbConnection);
         await Reservation.sequelize?.query("alter table \"Reservations\" enable trigger all")
         await ReservationConfig.sequelize?.query("alter table \"ReservationConfigs\" enable trigger all")
         await Restaurant.sequelize?.query("alter table \"Restaurants\" enable trigger all")        
@@ -150,9 +149,8 @@ describe('reservation DAL', () => {
     });
 
     describe("retrieve methods", () => {
-        it("should retrieve by restaurant id", async () => {
-            await Reservation.truncate({ force: true })
-            await ReservationConfig.truncate({ force: true });
+        it("should retrieve by restaurant id", async () => {          
+            await dbConnection.truncate({force: true, cascade: true});
 
             const reservationTime = new Date();
 
@@ -209,8 +207,7 @@ describe('reservation DAL', () => {
         });
 
         it("should retrieve by timeslot", async () => {
-            await Reservation.truncate({ force: true })
-            await ReservationConfig.truncate({ force: true });
+            await dbConnection.truncate({force: true, cascade: true});
 
             const reservationTime = new Date(2020, 0, 1, 11, 0);
 
