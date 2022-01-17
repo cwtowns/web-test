@@ -1,6 +1,5 @@
 FROM node:erbium-alpine
 ARG BUILD_ENV=development
-ARG foo=bar
 
 WORKDIR /app
 
