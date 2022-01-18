@@ -5,6 +5,7 @@ import {
   BelongsTo,
   Column,
   CreatedAt,
+  DataType,
   DeletedAt,
   ForeignKey,
   HasMany,
@@ -12,7 +13,7 @@ import {
   PrimaryKey, Table,
   UpdatedAt
 } from 'sequelize-typescript'
-import { HasOneGetAssociationMixin } from 'sequelize/dist'
+import { HasOneGetAssociationMixin, VIRTUAL } from 'sequelize/dist'
 
 import { Reservation, Restaurant } from '.'
 
@@ -59,7 +60,8 @@ export class ReservationConfig extends Model<ReservationConfigAttributes, Reserv
   @Column
   public maxTables!: number  
 
-  public availableTables!: number
+  @Column(DataType.VIRTUAL(DataType.NUMBER))
+  public availableTables: number
 
   @HasMany(() => Reservation)
   public reservations: Reservation[]
