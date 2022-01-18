@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "9feefc8b-6dac-4841-9681-89eb866ff049",
 		"name": "olo",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -17,7 +17,17 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"url": "http://localhost:9090/restaurant"
+				"url": {
+					"raw": "http://localhost:9090/restaurant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"restaurant"
+					]
+				}
 			},
 			"response": []
 		},
@@ -33,7 +43,18 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"url": "http://localhost:9090/restaurant/1"
+				"url": {
+					"raw": "http://localhost:9090/restaurant/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"restaurant",
+						"1"
+					]
+				}
 			},
 			"response": []
 		},
@@ -51,7 +72,17 @@
 						}
 					}
 				},
-				"url": "http://localhost:9090/restaurant"
+				"url": {
+					"raw": "http://localhost:9090/restaurant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"restaurant"
+					]
+				}
 			},
 			"response": []
 		},
@@ -103,7 +134,18 @@
 						}
 					}
 				},
-				"url": "http://localhost:9090/reservationConfig/"
+				"url": {
+					"raw": "http://localhost:9090/reservationConfig/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"reservationConfig",
+						""
+					]
+				}
 			},
 			"response": []
 		},
