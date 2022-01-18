@@ -73,7 +73,7 @@ describe('reservation DAL', () => {
             const partySize: number = 2;
 
             const reservationConfig: ReservationConfigCreationAttributes = {
-                restaurantId: 1,
+                restaurantId: 2,
                 startTime: reservationTime,
                 reservationSize: partySize,
                 maxTables: 0

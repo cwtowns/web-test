@@ -1,6 +1,8 @@
 import {
   AfterBulkCreate,
   AfterCreate,
+  AfterInit,
+  AfterSync,
   AutoIncrement,
   BelongsTo,
   Column,
@@ -9,6 +11,7 @@ import {
   DeletedAt,
   ForeignKey,
   HasMany,
+  Index,
   Model,
   PrimaryKey, Table,
   UpdatedAt
@@ -58,7 +61,7 @@ export class ReservationConfig extends Model<ReservationConfigAttributes, Reserv
   public reservationSize!: number
 
   @Column
-  public maxTables!: number  
+  public maxTables!: number   
 
   @Column(DataType.VIRTUAL(DataType.NUMBER))
   public availableTables: number
@@ -75,5 +78,11 @@ export class ReservationConfig extends Model<ReservationConfigAttributes, Reserv
   @AfterBulkCreate
   static updateAvailableTables(configs: ReservationConfig[]) {
     configs.forEach(c => c.availableTables = c.maxTables);
+  }    
+
+  @AfterSync
+  static addIndexes() {
+    this.sequelize?.query("ALTER TABLE \"ReservationConfigs\" ADD CONSTRAINT reservationConfigsDuplicateCheck UNIQUE (\"restaurantId\", \"startTime\", \"reservationSize\");");
   }
+
 }
