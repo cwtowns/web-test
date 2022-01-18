@@ -40,7 +40,7 @@ export const create = async (payload: ReservationCreationAttributes): Promise<Re
         });
 
         if (currentCount >= limit) {
-            throw new Error('No available reservations:  the limit is "' + limit + ' and the current reservation count is ' + currentCount);
+            throw new Error('No available reservations:  the limit is ' + limit + ' and the current reservation count is ' + currentCount);
         }
 
         return await Reservation.create(payload, { transaction: t });
