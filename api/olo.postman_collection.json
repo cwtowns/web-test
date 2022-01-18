@@ -44,7 +44,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:9090/restaurant/1",
+					"raw": "http://localhost:9090/restaurant/32",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -52,7 +52,7 @@
 					"port": "9090",
 					"path": [
 						"restaurant",
-						"1"
+						"32"
 					]
 				}
 			},
@@ -65,7 +65,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 5,\r\n    \"name\": \"Buffa's\",\r\n    \"address\" : \"800 Esplanade Ave\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Buffa's\",\r\n    \"address\" : \"800 Esplanade Ave\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -92,7 +92,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:9090/reservationConfig/?startTime=2020-01-01 08:00:00 PM&endTime=2020-01-01 08:45:00 PM&restaurantId=1",
+					"raw": "http://localhost:9090/reservationConfig/?startTime=2020-01-01 08:00:00 PM&endTime=2020-01-01 08:45:00 PM&restaurantId=32",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -113,7 +113,7 @@
 						},
 						{
 							"key": "restaurantId",
-							"value": "1"
+							"value": "32"
 						}
 					]
 				}
@@ -127,7 +127,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"restaurantId\" : 1,\r\n    \"startTime\" : \"2020-01-01 08:00:00 PM\",\r\n    \"endTime\" : \"2020-01-01 08:45:00 PM\",\r\n    \"reservationPartySize\" : 5,\r\n    \"numberOfTables\" : 2\r\n}",
+					"raw": "{\r\n    \"restaurantId\" : 74,\r\n    \"startTime\" : \"2020-01-01 08:00:00 PM\",\r\n    \"endTime\" : \"2020-01-01 08:45:00 PM\",\r\n    \"reservationPartySize\" : 5,\r\n    \"numberOfTables\" : 2\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -155,18 +155,24 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "Get Reservation?restaurantId=331&reservationTime=2020-01-01 08:45:00 PM",
+					"raw": "http://localhost:9090/reservation/?reservationTime=2020-01-01 08:00:00 PM&restaurantId=84",
+					"protocol": "http",
 					"host": [
-						"Get Reservation"
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"reservation",
+						""
 					],
 					"query": [
 						{
-							"key": "restaurantId",
-							"value": "331"
+							"key": "reservationTime",
+							"value": "2020-01-01 08:00:00 PM"
 						},
 						{
-							"key": "reservationTime",
-							"value": "2020-01-01 08:45:00 PM"
+							"key": "restaurantId",
+							"value": "84"
 						}
 					]
 				}
@@ -180,7 +186,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    restaurantId: 1\r\n}",
+					"raw": "{\r\n    \"customerId\" : 42,\r\n    \"restaurantId\": 63,\r\n    \"partySize\" : 5,\r\n    \"reservationTime\" : \"2020-01-01 08:00:00 PM\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
